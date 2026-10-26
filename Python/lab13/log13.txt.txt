@@ -1,0 +1,109 @@
+Purpose: Ye program ek simple Inventory Control System hai. Isme hum
+items ki list dekh sakte hain, naya item add kar sakte hain, item remove
+kar sakte hain, list ko alphabetically sort kar sakte hain, aur program
+exit kar sakte hain.
+
+1.  store = ["Notebook", "Pen", "Eraser", "Ruler"] Yahan store list
+    banayi hai taaki program ke starting mein kuch items already
+    inventory mein hon. Baad mein isi list mein items add, remove aur
+    sort honge.
+
+2.  while True: Yahan loop isliye lagaya hai taaki har operation ke baad
+    menu dobara show ho. Agar loop nahi hota, to user ko har baar
+    program restart karna padta. Option 5 par break loop rok deta hai.
+
+3.  print("=" * 40) Yahan 40 equal signs sirf menu ko heading se
+    visually separate karne ke liye hain, taaki inventory system ka
+    output neat lage.
+
+4.  print(...) statements Yahan print() menu ke options, headings,
+    inventory items aur success/error messages screen par dikhata hai.
+    Isse user ko pata chalta hai ki kya options available hain aur
+    operation ka result kya raha.
+
+5.  input("\nEnter your choice (1-5): ") Yahan input() user se poochta
+    hai ki woh kaunsa operation karna chahta hai. User ki choice c mein
+    store hoti hai, phir neeche conditions decide karti hain ki kya
+    karna hai.
+
+6.  if c == "1": Yahan check hota hai ki user ne View Inventory choose
+    kiya hai ya nahi. Agar choice 1 hai, to program current store list
+    dikhata hai.
+
+7.  if len(store) == 0: Yahan pehle check kiya jaata hai ki inventory
+    mein koi item bacha hai ya nahi. Agar list empty hai, to program
+    blank list dikhane ke bajaye “Inventory is empty” message deta hai.
+
+8.  i = 1 and i += 1 Yahan i ko 1 se start kiya hai taaki inventory
+    items ko 1, 2, 3… karke number diya ja sake. Har item print hone ke
+    baad i += 1 next item ke liye number badhata hai.
+
+9.  for item in store: Yahan loop list ke har item ko ek-ek karke uthata
+    hai, taaki saare inventory items alag-alag lines mein display ho
+    saken.
+
+10. elif c == "2": Yahan check hota hai ki user ne Add Item choose kiya
+    hai ya nahi. Agar haan, to program item ka naam maangta hai aur use
+    list mein add karne ki koshish karta hai.
+
+11. item = input("Enter item name to add: ").strip() Yahan user se naye
+    item ka naam liya jaata hai. .strip() isliye lagaya hai taaki user
+    agar naam ke aage ya peeche spaces de, to woh remove ho jaayen.
+
+12. Add Item condition — original code mein bug Original code: if i in
+    item: store.append(i)
+
+Yahan i use karna galat hai, kyunki i item ka naam nahi, numbering
+variable hai; aur Add Item option par aane se pehle i defined bhi na ho.
+Yahan item check aur add karna chahiye:
+
+    if item:
+        store.append(item)
+        print(f'[SUCCESS] "{item}" added to inventory.')
+    else:
+        print("Error: Item name cannot be empty.")
+
+Yahan if item: check karta hai ki user ne kuch naam type kiya hai.
+store.append(item) us naam ko inventory list ke end mein add karta hai.
+
+13. elif c == "3": Yahan check hota hai ki user Remove Item operation
+    karna chahta hai ya nahi. Agar haan, to program us item ka naam leta
+    hai jise delete karna hai.
+
+14. item in store Yahan check hota hai ki user jis item ko remove karna
+    chahta hai, woh inventory mein actually maujood hai ya nahi. Isse
+    bina check kiye remove karne ki koshish nahi hoti.
+
+15. store.remove(item) Yahan list se wahi item remove hota hai jo user
+    ne enter kiya aur jo list mein mil gaya. Uske baad success message
+    user ko confirm karta hai ki item remove ho gaya.
+
+16. elif c == "4": Yahan check hota hai ki user inventory ko
+    alphabetically sort karna chahta hai ya nahi.
+
+17. store.sort(key=str.lower) Yahan inventory ke items alphabetic order
+    mein arrange kiye jaate hain. key=str.lower se capital aur small
+    letters ki wajah se sorting ka order unnecessarily different nahi
+    hota.
+
+18. enumerate(store, start=1) Yahan sorted items ke saath numbering bhi
+    chahiye, isliye enumerate() use kiya hai. start=1 se numbering 1 se
+    shuru hoti hai, 0 se nahi.
+
+19. elif c == "5": and break Yahan user Exit choose karta hai to
+    thank-you message show hota hai. break menu ke while True loop ko
+    stop karta hai, jisse program exit ho jaata hai.
+
+20. else: Yahan tab message show hota hai jab user 1 se 5 ke alawa koi
+    choice enter karta hai. Isse user ko pata chalta hai ki choice
+    invalid thi aur use correct option select karna chahiye.
+
+21. f-strings, jaise f'"{item}" removed from inventory.' Yahan f-string
+    isliye use ki hai taaki message mein actual item ka naam aa sake.
+    Example: agar item Pen hai, to message mein
+    "Pen" removed from inventory show hoga.
+
+
+
+
+

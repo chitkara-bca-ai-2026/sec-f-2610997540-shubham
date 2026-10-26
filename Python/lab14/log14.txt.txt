@@ -1,0 +1,160 @@
+1.  books = [...] Yahan books list mein library ki starting books rakhi
+    hain. Har book ko tuple mein store kiya gaya hai, taaki us book ka
+    title, author, publication year aur category ek saath linked rahein.
+
+2.  Har book ka tuple, jaise
+    ("Python Programming", "Guido van Rossum", 1991, "Programming")
+    Yahan tuple use kiya hai kyunki ek book ki 4 related details ko ek
+    record ki tarah rakhna hai. Is code mein har tuple ka order same
+    hai: title, author, year, category.
+
+3.  library_categories = {"Programming", "AI", "Computer Science"} Yahan
+    set mein library mein available categories rakhi hain. Set use karne
+    se same category duplicate nahi hoti, aur baad mein category gap
+    analysis karna easy hota hai.
+
+4.  student_wishlist = {"AI", "Cloud", "Cybersecurity"} Yahan set mein
+    woh categories hain jo students library mein chahte hain. Baad mein
+    is wishlist ko available categories se compare karke pata lagaya
+    jaata hai ki kya already available hai aur kya khareedna chahiye.
+
+5.  while True: Yahan loop isliye use hua hai taaki user ek operation
+    karne ke baad bhi menu par wapas aa sake aur doosra operation choose
+    kar sake. Option 6 par break is loop ko stop karta hai.
+
+6.  print() menu statements Yahan print() library system ke options
+    screen par show karta hai. User ko pata chalta hai ki books dekhne,
+    add karne, categories check karne, wishlist update karne, gap
+    analysis karne ya exit karne ke liye kaunsa option choose karna hai.
+
+7.  choice = input("Enter your choice (1-6): ") Yahan user ki selected
+    menu choice li jaati hai. Neeche if/elif isi value ko check karte
+    hain aur uske according operation run hota hai.
+
+8.  if choice == "1": Yahan check hota hai ki user library ki books
+    dekhna chahta hai ya nahi. Agar choice 1 hai, to code har book ka
+    record display karta hai.
+
+9.  for book in books: Yahan loop books list ki har book ko ek-ek karke
+    read karta hai, taaki program saari books ki details show kar sake.
+
+10. title, author, year, category = book Yahan tuple ki 4 values ko alag
+    variables mein unpack kiya gaya hai. Isse title, author, year aur
+    category ko clearly alag-alag print kar sakte hain.
+
+11. print("Title:", title) aur baaki detail prints Yahan har book ki
+    details separate lines mein show hoti hain, taaki user ko ek book ka
+    title, author, year aur category easily samajh aaye.
+
+12. len(books) Yahan library mein total book records count kiye jaate
+    hain. Book add hone ke baad bhi ye count current list ke hisaab se
+    sahi total dikhata hai.
+
+13. elif choice == "2": Yahan check hota hai ki user nayi book add karna
+    chahta hai. Agar haan, to program book ki required details input
+    leta hai.
+
+14. .strip() on title, author, year_input and category Yahan .strip()
+    use kiya hai taaki input ke start/end mein extra spaces remove ho
+    jaayen. Isse " AI " jaisi category store hone ke bajaye "AI" store
+    hoti hai.
+
+15. if title and author and year_input and category: Yahan check kiya
+    jaata hai ki user ne chaaron fields fill ki hain. Agar koi field
+    blank hai, to program incomplete book record add nahi karta.
+
+16. try: Yahan try ke andar year ko number mein convert karne ki koshish
+    hoti hai. User galti se letters enter kare, to program crash hone ke
+    bajaye except mein error message de sakta hai.
+
+17. year = int(year_input) Yahan publication year ko string se integer
+    banaya gaya hai. Isse year record mein number ke roop mein store
+    hota hai, na ki text ke roop mein.
+
+18. new_book = (title, author, year, category) Yahan user ki di hui
+    details ko ek tuple mein pack kiya gaya hai, taaki woh existing
+    books ke same format mein rahe.
+
+19. books.append(new_book) Yahan naya tuple books list ke end mein add
+    hota hai. Isse newly entered book library records ka part ban jaati
+    hai.
+
+20. library_categories.add(category) Yahan new book ki category
+    available categories ke set mein bhi add ki jaati hai. Isse agar
+    book ki category pehle se set mein nahi thi, to gap analysis mein
+    woh library ke paas available category ke roop mein count hogi. Agar
+    category already present hai, to set duplicate nahi banata.
+
+21. except ValueError: Yahan ye error handle hota hai jab
+    int(year_input) year ko number mein convert nahi kar paata, jaise
+    user two thousand type kare. Program crash karne ke bajaye clear
+    error message dikhata hai.
+
+22. else: print("[ERROR] All fields are mandatory.") Yahan agar title,
+    author, year ya category mein se koi bhi blank ho, to user ko bataya
+    jaata hai ki sab fields fill karna zaroori hai.
+
+23. elif choice == "3": Yahan check hota hai ki user library ki unique
+    categories dekhna chahta hai. Program set ki categories print karta
+    hai.
+
+24. for category in sorted(library_categories): Yahan sorted()
+    categories ko alphabetical order mein arrange karta hai, taaki list
+    random-looking order mein show na ho. for har sorted category ko
+    print karta hai.
+
+25. len(library_categories) Yahan unique categories ka count show hota
+    hai. Kyunki categories set mein hain, ek hi category ko multiple
+    books use karein tab bhi woh sirf ek baar count hoti hai.
+
+26. elif choice == "4": Yahan check hota hai ki student wishlist mein ek
+    requested category add karna chahta hai.
+
+27. requested_category = input(...).strip() Yahan student se required
+    category ka naam liya jaata hai aur extra outer spaces remove ki
+    jaati hain, taaki wishlist mein clean category name save ho.
+
+28. if requested_category: Yahan check hota hai ki student ne blank
+    input to nahi diya. Empty input ko wishlist mein add karne se rokne
+    ke liye ye condition hai.
+
+29. student_wishlist.add(requested_category) Yahan requested category
+    wishlist set mein add hoti hai. Set use hone ki wajah se same
+    category dobara add karne par duplicate entry nahi banti.
+
+30. elif choice == "5": Yahan user ne Gap Analysis choose kiya hai. Is
+    section mein library ki available categories ko student ki desired
+    categories se compare kiya jaata hai.
+
+31. library_categories & student_wishlist Yahan & set intersection karta
+    hai. Is code mein iska purpose woh categories find karna hai jo
+    library mein bhi available hain aur student wishlist mein bhi hain —
+    yaani already in stock.
+
+32. student_wishlist - library_categories Yahan - set difference karta
+    hai. Is code mein woh wishlist categories milti hain jo students
+    chahte hain, lekin library ke available categories set mein nahi
+    hain — yaani purchase order ke liye consider karni hain.
+
+33. library_categories | student_wishlist Yahan | set union karta hai.
+    Isse dono sets ki saari unique categories ek combined set mein milti
+    hain — yaani library aur wishlist ko mila kar total category
+    coverage.
+
+34. already_in_stock, purchase_order_needed, full_combined_coverage
+    Yahan in variables mein teen alag analysis results save hote hain,
+    taaki unhe baad mein clearly labelled output ke saath print kiya ja
+    sake.
+
+35. print() in Gap Analysis Yahan har result ke saath label show hota
+    hai. Isse user ko samajh aata hai ki kaunsi categories already
+    available hain, kaunsi missing hain, aur dono sets ko milakar kaunsi
+    categories cover hoti hain.
+
+36. elif choice == "6": and break Yahan user Exit choose karta hai, to
+    goodbye message print hota hai aur break menu loop ko end kar deta
+    hai.
+
+37. Final else: Yahan agar user 1–6 ke alawa koi choice enter karta hai,
+    to invalid-choice message show hota hai. Isse user ko correct menu
+    option enter karne ka signal milta hai.

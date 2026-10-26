@@ -1,0 +1,192 @@
+1.  students = {...} Yahan students dictionary mein starting ke student
+    records store kiye gaye hain. Har student ka roll number key hai,
+    aur uske saamne name, branch, semester aur marks ki details hain. Is
+    structure se roll number ke through student record easily find,
+    update ya delete kar sakte hain.
+
+2.  "101", "102", "103" as keys Yahan roll numbers ko string rakha gaya
+    hai, kyunki input() se user ka roll number bhi string hi aata hai.
+    Isse search karte waqt type conversion ki zaroorat nahi padti.
+
+3.  Har student ke andar nested dictionary Yahan "Name", "Branch",
+    "Semester" aur "Marks" ko ek student ke record ke andar rakha hai,
+    taaki us student ki saari information ek hi jagah rahe.
+
+4.  "Marks": [85, 90, 78] Yahan marks ko list mein rakha gaya hai kyunki
+    ek student ke multiple subjects ke marks store karne hain. Baad mein
+    isi list se total aur average calculate hota hai.
+
+5.  while True: Yahan loop use hua hai taaki user ek operation complete
+    karne ke baad menu par wapas aa sake. Isse program baar-baar restart
+    nahi karna padta. Option 7 par break loop ko stop karta hai.
+
+6.  Menu ke print() statements Yahan print() saare available operations
+    dikhata hai, jaise students dekhna, search karna, register karna,
+    update karna, performance dekhna, delete karna aur exit karna. Isse
+    user ko pata rehta hai ki kaun-kaun se actions available hain.
+
+7.  choice = input(...).strip() Yahan user se menu option liya jaata
+    hai. .strip() extra spaces hata deta hai, taaki " 1 " jaisa input
+    clean hokar "1" ban jaaye. Phir if/elif selected option ke according
+    kaam karta hai.
+
+8.  if not students: Yahan check hota hai ki dictionary mein koi student
+    record bacha hai ya nahi. Agar dictionary empty hai, to program “No
+    student records found” dikhata hai, warna records print karta hai.
+
+9.  for roll, student in students.items(): Yahan .items() har record ki
+    key aur value ek saath deta hai: roll mein roll number aata hai aur
+    student mein uski details. Isliye saare students ko ek-ek karke
+    display karna easy hota hai.
+
+10. student['Name'], student['Branch'], etc. Yahan dictionary keys ke
+    through particular student ki details nikali jaati hain. F-string
+    mein in values ko rakhkar ek line mein student ka complete record
+    dikhaya jaata hai.
+
+11. len(students) Yahan total registered student records count hote
+    hain. Isliye View All Students ke end mein current enrolled students
+    ka total dikhaya jaata hai.
+
+12. elif choice == "2": Yahan check hota hai ki user roll number se
+    student search karna chahta hai. Program roll number leta hai aur
+    uske basis par matching record dhoondhta hai.
+
+13. student = students.get(roll) Yahan .get() se given roll number ka
+    record nikala jaata hai. Agar roll number dictionary mein nahi hai,
+    to error dene ke bajaye None milta hai, jise neeche check kiya ja
+    sakta hai.
+
+14. if student is not None: Yahan check hota hai ki search mein actual
+    student record mila hai ya nahi. Record milne par details show hoti
+    hain; nahi milne par “Student record not found” message aata hai.
+
+15. elif choice == "3": Yahan user new student register karna chahta
+    hai. Isliye pehle roll number liya jaata hai, phir duplicate ya
+    empty roll number check hota hai.
+
+16. if not roll: Yahan check hota hai ki roll number blank to nahi hai.
+    Blank key ke saath student record save na ho, isliye ye validation
+    rakha hai.
+
+17. elif roll in students: Yahan check hota hai ki entered roll number
+    pehle se registered hai ya nahi. Isse same roll number ke naam par
+    existing student record accidentally overwrite hone se bachta hai.
+
+18. try: Yahan marks input aur number conversion ko handle karne ke liye
+    try block use hua hai. Agar user marks ki jagah letters enter kare,
+    to program crash hone ke bajaye except ValueError tak pahunchta hai.
+
+19. marks = [] Yahan new student ke 3 subjects ke marks temporarily
+    collect karne ke liye empty list banayi jaati hai.
+
+20. for i in range(3): Yahan loop exactly 3 baar chalta hai, kyunki is
+    program mein har student ke liye 3 subject marks liye ja rahe hain.
+    i + 1 se prompt Subject 1, Subject 2, Subject 3 ke naam se dikhaya
+    jaata hai.
+
+21. mark = int(input(...)) Yahan user ka mark pehle input hota hai, phir
+    int() se integer mein convert hota hai, taaki number ki tarah range
+    check aur calculation ki ja sake.
+
+22. if mark < 0 or mark > 100: raise ValueError Yahan check hota hai ki
+    marks valid range 0 se 100 ke beech hain. Agar marks -1 ya 105 jaise
+    invalid hain, to ValueError raise karke invalid marks ko record mein
+    add hone se roka jaata hai.
+
+23. marks.append(mark) Yahan har valid subject mark ko marks list mein
+    add kiya jaata hai. Loop ke end tak list mein teeno subjects ke
+    marks aa jaate hain.
+
+24. if not name or not branch or not semester: Yahan check hota hai ki
+    student ki required text details blank to nahi chhodi gayi. Agar koi
+    blank hai, to incomplete student record save nahi hota.
+
+25. students[roll] = {...} Yahan new student ka complete record
+    dictionary mein save hota hai. Roll number key ban jaata hai aur
+    name, branch, semester, marks uski value ke andar store hote hain.
+
+26. except ValueError: Yahan galat numeric input ya 0–100 ke bahar marks
+    enter karne par error message show hota hai. Isse user ko pata
+    chalta hai ki marks dobara valid format mein enter karne chahiye.
+
+27. elif choice == "4": Yahan user existing student ki branch ya
+    semester update karna chahta hai. Pehle roll number se record find
+    hota hai, phir user choose karta hai ki kaunsa field change karna
+    hai.
+
+28. student = students.get(roll) and if student is None: Yahan update se
+    pehle confirm hota hai ki student record exist karta hai. Agar
+    record nahi mila, to program kisi doosre record ko change karne ki
+    koshish nahi karta.
+
+29. field = input(...).strip() Yahan user se poocha jaata hai ki Branch
+    update karni hai ya Semester. Choice ko string ke roop mein read
+    karke if field == "1" ya elif field == "2" se decide hota hai ki
+    kaunsa field update hoga.
+
+30. new_branch = input(...).strip() and
+    new_semester = input(...).strip() Yahan updated value user se li
+    jaati hai. .strip() extra spaces remove karta hai, taaki new value
+    clean form mein store ho.
+
+31. if new_branch: / if new_semester: Yahan check hota hai ki user ne
+    new value blank to nahi di. Empty value ko existing details par
+    replace karne se rokne ke liye ye validation hai.
+
+32. student["Branch"] = new_branch / student["Semester"] = new_semester
+    Yahan existing student dictionary ke selected field ki value replace
+    hoti hai. Baaki student details, jaise name aur marks, unchanged
+    rehti hain.
+
+33. Final else in update field Yahan agar user Branch ke liye 1 ya
+    Semester ke liye 2 ke alawa kuch enter karta hai, to error message
+    show hota hai. Isse invalid field selection par record change nahi
+    hota.
+
+34. elif choice == "5": Yahan user selected student ki academic
+    performance dekhna chahta hai. Program pehle roll number se student
+    find karta hai, phir uske marks se total, average aur result
+    calculate karta hai.
+
+35. total = sum(student["Marks"]) Yahan sum() student ke saare subject
+    marks ko add karta hai. Is program mein total marks nikalne ke liye
+    use hua hai.
+
+36. average = total / len(student["Marks"]) Yahan total marks ko
+    subjects ki count se divide karke average nikala jaata hai. len()
+    marks list mein kitne subject marks hain woh count karta hai, isliye
+    calculation list ke size ke according hoti hai.
+
+37. result = "PASS" if average >= 40 else "FAIL" Yahan one-line
+    condition average check karti hai. Agar average 40 ya usse zyada
+    hai, to PASS; warna FAIL show hota hai. Ye program ka simplified
+    result rule hai.
+
+38. average:.2f in the f-string Yahan average ko decimal ke baad 2
+    digits ke saath display kiya jaata hai, jaise 84.33%. Isse report ka
+    output neat aur consistent dikhta hai.
+
+39. "=" * 18 and "=" * 52 Yahan equal signs report ke heading aur ending
+    ko visually separate karte hain, taaki Academic Report output ek
+    report jaisa lage.
+
+40. elif choice == "6": Yahan user student record delete karna chahta
+    hai. Roll number input karne ke baad record dictionary se remove
+    kiya jaata hai.
+
+41. student = students.pop(roll, None) Yahan .pop() roll number ka
+    record dictionary se remove karta hai aur removed record return bhi
+    karta hai. Agar roll number nahi milta, to None return hota hai;
+    isliye deletion ke baad result check karna easy hota hai.
+
+42. if student is not None: Yahan confirm hota hai ki record actually
+    mila aur delete hua. Record milne par us student ka name success
+    message mein show hota hai; nahi mila to error message aata hai.
+
+43. elif choice == "7": and break Yahan user Exit choose karta hai,
+    goodbye message show hota hai aur break menu loop stop kar deta hai.
+
+44. Final else: Yahan agar user 1 se 7 ke beech koi valid option nahi
+    deta, to invalid-choice error show hota hai. Isse user ko correct
+    option enter karne ka signal milta hai.
