@@ -90,7 +90,7 @@ Whenever you add or update your code:
 
 ```bash
 # 1. Stage your files
-git add .
+git ad .
 
 # 2. Commit your work
 git commit -m "Add Python Lab 13 solution and log"
