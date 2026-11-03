@@ -1,0 +1,135 @@
+Is program mein hum recursion use karke factorial calculate karte hain aur Fibonacci series generate karte hain.
+Menu se user factorial nikal sakta hai, Fibonacci series bana sakta hai, ya program exit kar sakta hai.
+
+1. factorial(n)
+
+Is function ka kaam kisi non-negative number ka factorial nikalna hai.
+Factorial ka matlab number se 1 tak saare numbers ko multiply karna.
+
+Example:
+5! = 5 × 4 × 3 × 2 × 1 = 120
+
+`if n <= 1` base case hai. Jab n 0 ya 1 hota hai, function 1 return karta hai.
+Base case isliye zaroori hai taaki recursion ruk sake.
+
+`return n * factorial(n - 1)` recursive step hai.
+Function apne aap ko chhote number, yani n - 1, ke saath call karta hai.
+Har call number ko neeche le jaata hai, jab tak base case nahi milta.
+
+Hum factorial ke liye recursion use karte hain kyunki factorial ki mathematical definition mein n ko (n - 1)! se multiply kiya jaata hai.
+
+2. fibonacci(n)
+
+Is function ka kaam Fibonacci sequence ka n-th number return karna hai.
+Fibonacci series mein har next number pichhle do numbers ka sum hota hai.
+
+Example:
+0, 1, 1, 2, 3, 5, 8, 13 ...
+
+`if n == 0` par function 0 return karta hai.
+`elif n == 1` par function 1 return karta hai.
+Ye dono base cases hain, jahan recursion stop hota hai.
+
+`return fibonacci(n - 1) + fibonacci(n - 2)` recursive step hai.
+Ye pichhle do Fibonacci numbers calculate karke unka sum return karta hai.
+
+Is function ko recursion se banaya kyunki Fibonacci ki definition directly previous two terms par based hai.
+
+3. show_menu()
+
+Is function ka kaam menu ke 3 options screen par dikhana hai:
+1. Calculate Factorial
+2. Generate Fibonacci Series
+3. Exit
+
+Menu ko separate function banaya kyunki while loop har operation ke baad menu dobara show karta hai.
+Isse print statements baar-baar likhne nahi padte aur main code simple rehta hai.
+
+4. main()
+
+`main()` program ka main flow control karta hai.
+Ye menu show karta hai, user ki choice leta hai aur selected operation ke according factorial ya Fibonacci function call karta hai.
+
+Actual mathematical calculation alag functions mein rakhi gayi hai.
+Isliye `main()` ka kaam mainly user input aur program flow manage karna hai.
+
+5. while True
+
+`while True` menu ko continuously run karta hai.
+User ek operation complete karne ke baad dobara menu par aa sakta hai.
+
+Loop ko stop karne ke liye Exit option par `break` use hota hai.
+Agar while loop nahi hota, toh user ek operation ke baad program ko dobara run karna pad sakta tha.
+
+6. choice = input(...).strip()
+
+`input()` user se menu choice leta hai.
+Input string ke form mein aata hai, isliye choices ko "1", "2", "3" ke saath compare karte hain.
+
+`.strip()` input ke start aur end ke extra spaces remove karta hai.
+Isse " 1 " bhi clean hokar "1" ban jaata hai.
+
+7. Choice 1 – Calculate Factorial
+
+User se integer input liya jaata hai.
+`int()` input ko whole number mein convert karta hai.
+
+`if n < 0` check karta hai ki number negative toh nahi.
+Negative number factorial ke is lab ke liye allowed nahi hai, isliye error message show karke `continue` menu par wapas bhejta hai.
+
+Valid input par `factorial(n)` call hota hai aur result display hota hai.
+
+8. Choice 2 – Generate Fibonacci Series
+
+User se series ke terms ki count li jaati hai.
+`terms` batata hai ki series mein kitne numbers generate karne hain.
+
+`series = []` ek empty list banata hai, jisme Fibonacci numbers store honge.
+
+`for i in range(terms)` loop 0 se terms - 1 tak chalta hai.
+Har iteration mein `fibonacci(i)` call hota hai aur result list mein add hota hai.
+
+`series.append(fibonacci(i))` ka use har generated number ko list ke end mein store karne ke liye hota hai.
+
+Example:
+Agar terms 8 hain, output hoga:
+[0, 1, 1, 2, 3, 5, 8, 13]
+
+9. range(terms)
+
+`range(terms)` 0 se start hokar terms - 1 tak values deta hai.
+Agar terms 5 hain, toh values 0, 1, 2, 3, 4 hongi.
+
+Yahan range isliye use hota hai taaki Fibonacci function ko har index ke liye call kar sakein aur required count ke numbers mil sakein.
+
+10. try-except ValueError
+
+`try` ke andar user input ko integer mein convert kiya jaata hai.
+Agar user number ki jagah letters ya invalid value enter karta hai, toh `ValueError` aa sakta hai.
+
+`except ValueError` error ko handle karke message show karta hai.
+Isse program invalid input par crash nahi hota.
+
+11. if n < 0 / if terms < 0
+
+Ye input validation hai.
+Factorial ke liye negative number allowed nahi hai.
+Fibonacci terms ki count bhi negative nahi ho sakti.
+
+Is check se invalid input par calculation start nahi hoti.
+`continue` current loop round skip karke menu par wapas bhejta hai.
+
+12. break
+
+`break` current loop ko stop karta hai.
+Choice 3 par goodbye message show hota hai aur break se program menu loop se bahar aa jaata hai.
+
+13. continue
+
+`continue` current iteration ko skip karke next iteration start karta hai.
+Yahan negative input ya invalid numeric input ke baad menu dobara show karne ke liye use hota hai.
+
+14. if __name__ == "__main__"
+
+Is check se `main()` tabhi run hota hai jab file directly execute ki jaati hai.
+Agar file kisi doosre Python program mein import ho, toh Mathematics Learning Tool automatically start nahi hota.

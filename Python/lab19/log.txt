@@ -1,0 +1,152 @@
+Is program mein hum student ke notes ko text file mein save karte hain aur baad mein read karke dekh sakte hain.
+Menu se user notes save kar sakta hai, saved notes read kar sakta hai, ya program exit kar sakta hai.
+
+1. write_notes(filename, content)
+
+Is function ka kaam notes ko text file mein save karna hai.
+`filename` file ka naam hai, jaise "notes.txt".
+`content` woh text hai jo user save karna chahta hai.
+
+`open(filename, "w", encoding="utf-8")` file ko write mode mein open karta hai.
+Write mode (`"w"`) file mein naya content likhne ke liye use hota hai. Agar file pehle se hai, toh purana content replace ho jaata hai. Agar file nahi hai, toh nayi file create hoti hai.
+
+`file.write(content)` user ke notes file ke andar likhta hai.
+Function ke baad success message show hota hai, taaki user ko pata chale ki notes save ho gaye.
+
+Is function ko alag banaya kyunki file writing ka kaam ek hi jagah rahe aur main program se easily call ho sake.
+
+2. read_notes(filename)
+
+Is function ka kaam saved notes ko file se read karke return karna hai.
+Sabse pehle `os.path.exists(filename)` check karta hai ki file present hai ya nahi.
+
+Agar file exist karti hai, toh `open(filename, "r", encoding="utf-8")` use karke read mode mein open hoti hai.
+Read mode (`"r"`) file ka content dekhne ke liye use hota hai.
+`file.read()` file ka complete content read karta hai aur `return` us content ko caller ko wapas deta hai.
+
+Agar file nahi milti, toh function "No notes file exists yet." return karta hai.
+Ye check isliye zaroori hai taaki file create hone se pehle View Notes select karne par program crash na ho.
+
+3. show_menu()
+
+Is function ka kaam menu ke options screen par print karna hai:
+1. Write / Save Notes
+2. View Saved Notes
+3. Exit
+
+Menu ko separate function banaya kyunki while loop mein har operation ke baad menu dobara dikhana hota hai.
+Isse print statements baar-baar likhne nahi padte aur code organized rehta hai.
+
+4. main()
+
+`main()` program ka main flow manage karta hai.
+Ye file ka naam set karta hai, menu show karta hai, user ki choice leta hai aur selected operation ke liye correct function call karta hai.
+
+File save karne ka actual kaam `write_notes()` karta hai aur file read karne ka kaam `read_notes()` karta hai.
+Isliye `main()` mostly user input aur program flow manage karta hai.
+
+5. filename = "notes.txt"
+
+Ye variable file ka naam store karta hai.
+Hum filename ko variable mein rakhte hain taaki har jagah `"notes.txt"` baar-baar likhne ki zaroorat na ho.
+
+Agar future mein file ka naam change karna ho, toh ek hi jagah change karna padega.
+
+6. content = input("Enter notes to save: ")
+
+`input()` user se notes ka text leta hai.
+Jo bhi user type karta hai, woh `content` variable mein store hota hai.
+
+Baad mein isi content ko `write_notes()` function ke through file mein save kiya jaata hai.
+
+7. open(filename, "w")
+
+`open()` file ko access karne ke liye use hota hai.
+`"w"` write mode hai.
+
+Write mode mein:
+- File nahi hai toh create hoti hai.
+- File already hai toh uska purana content overwrite hota hai.
+- Naya content file mein likha jaata hai.
+
+Is lab mein notes save karne ke liye write mode use hota hai.
+
+8. open(filename, "r")
+
+`"r"` read mode hai.
+Is mode mein file ka content read kiya jaata hai, file mein naya text write nahi hota.
+
+View Saved Notes option mein read mode use hota hai taaki user notes dekh sake.
+
+9. with open(...)
+
+`with open(...)` ko context manager kehte hain.
+Iska use file ko safely open aur close karne ke liye hota hai.
+
+Jab `with` block complete ho jaata hai, Python file ko automatically close kar deta hai.
+Agar block ke andar error aa jaaye, tab bhi file properly close hoti hai.
+
+Isliye `with open()` use karna manually `file.close()` likhne se safer aur simpler hai.
+
+10. file.write(content)
+
+`write()` file ke andar text likhta hai.
+Yahan user ke entered notes ko `notes.txt` mein save karne ke liye use hota hai.
+
+`write()` khud success message print nahi karta, isliye function ke baad hum confirmation message print karte hain.
+
+11. file.read()
+
+`read()` file ka complete text read karta hai.
+Iska returned content `read_notes()` se main program ko milta hai.
+
+Phir `print(content)` console par notes display karta hai.
+
+12. os.path.exists(filename)
+
+`os.path.exists()` check karta hai ki given path ya file exist karti hai ya nahi.
+Ye `True` ya `False` return karta hai.
+
+Yahan file read karne se pehle check kiya jaata hai.
+Agar notes.txt abhi create nahi hui, toh user ko informative message milta hai, aur program crash nahi hota.
+
+13. import os
+
+`os` Python ka built-in module hai jo operating system se related operations ke liye use hota hai.
+Is program mein `os.path.exists()` use karne ke liye `os` import kiya gaya hai.
+
+14. while True
+
+`while True` menu ko continuously run karta hai.
+Ek operation complete hone ke baad user dobara menu par aa sakta hai.
+
+Agar loop nahi hota, toh user ko har operation ke liye program dobara run karna padta.
+Exit option par `break` loop ko stop karta hai.
+
+15. if, elif, else
+
+Ye conditions user ki choice ke according operation select karti hain.
+
+- `if choice == "1"` notes save karta hai.
+- `elif choice == "2"` saved notes read aur display karta hai.
+- `elif choice == "3"` program exit karta hai.
+- `else` invalid choice par error message show karta hai.
+
+Conditions isliye use hoti hain taaki program user ke selected option ke according kaam kare.
+
+16. choice = input(...).strip()
+
+`input()` menu choice user se leta hai.
+`.strip()` input ke start aur end ke extra spaces remove karta hai.
+
+Isse agar user choice ke saath extra spaces type kare, toh input clean ho jaata hai.
+
+17. break
+
+`break` current loop ko stop karta hai.
+Choice 3 par goodbye message print hota hai aur `break` se menu loop terminate ho jaata hai.
+
+18. if __name__ == "__main__"
+
+Is condition se `main()` tabhi run hota hai jab Python file directly execute ki jaati hai.
+Agar file kisi doosre Python program mein import ho, toh Notes Management System automatically start nahi hota.

@@ -1,0 +1,167 @@
+1. calculate_results(marks)
+
+Is function ka kaam student ke marks ka total aur average calculate karna hai.
+`sum(marks)` list ke saare marks ko add karta hai.
+`len(marks)` batata hai ki list mein kitne subjects ke marks hain.
+Total ko subjects ki count se divide karke average milta hai.
+`return total, average` dono values main program ko wapas deta hai.
+
+Is function ko alag banaya kyunki total aur average ki calculation display aur search dono jagah use hoti hai. Same code baar-baar likhne ki zaroorat nahi padti.
+
+Example: marks = [85, 90, 78]
+Total = 253, Average = 84.33
+
+2. display_student(roll, student)
+
+Is function ka kaam ek student ka complete record display karna hai.
+`roll` student ka roll number hai aur `student` uski details wali dictionary hai.
+`student["Marks"]` marks ki list nikalta hai.
+`calculate_results(marks)` se total aur average milta hai.
+Uske baad `print()` roll number, name, marks, total aur average show karta hai.
+
+Is function ko separate rakha hai taaki saare students display karte waqt aur kisi ek student ko search karte waqt same format use ho. Isse code repeat nahi hota.
+
+`{average:.2f}` average ko decimal ke baad 2 digits tak show karta hai, jaise 84.33.
+
+3. add_student(records, roll, name, marks)
+
+Is function ka kaam naye student ka record dictionary mein add karna hai.
+`records` students wali dictionary hai.
+`roll`, `name`, aur `marks` naye student ki details hain.
+`if roll in records` check karta hai ki ye roll number pehle se dictionary mein hai ya nahi.
+
+Agar roll number already present hai, toh error message show hota hai aur duplicate record add nahi hota.
+Agar roll number nahi hai, toh `records[roll]` ke andar Name aur Marks wali inner dictionary store hoti hai.
+
+Ye function isliye banaya kyunki student add karne ka logic main menu se alag aur reusable rahe.
+
+4. show_menu()
+
+Is function ka kaam menu ke options print karna hai:
+1. Display All Students
+2. Add New Student
+3. Search Student
+4. Exit
+
+Menu ko separate function banaya kyunki program ke loop mein menu baar-baar show hota hai. Agar menu ke print statements har jagah likhte, toh code repeat hota aur main program lamba ho jata.
+
+5. main()
+
+`main()` program ka main control handle karta hai.
+Iske andar students dictionary banayi jaati hai, menu show hota hai, user ki choice li jaati hai aur us choice ke according function call hota hai.
+
+Calculation aur record display ka actual kaam alag functions mein hai. Isliye `main()` ka kaam mainly user ke actions ko manage karna hai.
+
+6. students = {...}
+
+Ye dictionary student records store karti hai.
+Outer dictionary mein roll number key hota hai, jaise "101".
+Uski value ek inner dictionary hoti hai, jisme student ka Name aur Marks stored hote hain.
+
+Nested dictionary use karne se ek student ki saari details ek hi record ke andar rehti hain.
+Program mein 3 sample students pehle se diye gaye hain, taaki display aur search options ko turant test kar sakein.
+
+7. while True
+
+`while True` menu ko continuously chalata hai.
+Ek operation complete hone ke baad program dobara menu show karta hai.
+
+Agar loop nahi hota, toh har operation ke baad program stop ho sakta tha. `break` se Exit option par loop band hota hai aur `continue` se current round skip karke menu par wapas aate hain.
+
+8. choice = input(...).strip()
+
+`input()` user se menu choice leta hai.
+Input string hota hai, isliye choices ko "1", "2", "3", aur "4" jaise strings se compare karte hain.
+`.strip()` input ke start aur end ke extra spaces remove karta hai.
+
+Isse user agar spaces ke saath choice type kare, toh bhi input clean ho jaata hai.
+
+9. if, elif, else
+
+Ye conditions decide karti hain ki user ki choice ke according kaunsa operation perform hoga.
+`if` pehli condition check karta hai.
+`elif` next conditions check karta hai.
+`else` tab chalta hai jab koi valid choice match nahi hoti.
+
+Is program mein choice 1 records display karti hai, choice 2 student add karti hai, choice 3 student search karti hai, aur choice 4 exit karta hai.
+Invalid choice par error message show hota hai.
+
+10. students.items()
+
+`students.items()` dictionary ke key-value pairs deta hai.
+Yahan `roll` mein roll number aur `student` mein us student ki details aati hain.
+
+`for roll, student in students.items()` har student ke record par ek-ek karke loop chalata hai.
+Isko Display All Students option mein use kiya hai, taaki dictionary ke saare students display ho sakein.
+
+11. students.get(roll)
+
+`.get(roll)` dictionary mein given roll number ka record search karta hai.
+Agar record milta hai, toh student ki dictionary return hoti hai.
+Agar record nahi milta, toh `None` return hota hai.
+
+Search option mein `.get()` use kiya kyunki user koi bhi roll number enter kar sakta hai. Missing roll number par program crash hone ke bajay not-found message show karta hai.
+
+12. marks = [] aur marks.append(mark)
+
+`marks = []` ek empty list banata hai jisme subject marks store honge.
+`marks.append(mark)` har entered mark ko list ke end mein add karta hai.
+
+List use karte hain kyunki ek student ke 3 subject marks ko ek saath store karna hai. Baad mein isi list se total aur average calculate hote hain.
+
+13. range(1, 4)
+
+`range(1, 4)` numbers 1, 2, aur 3 deta hai.
+Isliye `for subject in range(1, 4)` loop exactly 3 baar chalta hai.
+
+Yahan iska use student ke 3 subjects ke marks input karne ke liye hota hai.
+
+14. int(input(...))
+
+`input()` user ka entered mark text/string ke form mein deta hai.
+`int()` us text ko integer mein convert karta hai, taaki marks par mathematical calculation ho sake.
+
+Agar user number ki jagah text enter karta hai, toh `ValueError` aa sakta hai. Is error ko `try-except` handle karta hai.
+
+15. if mark < 0 or mark > 100
+
+Ye condition check karti hai ki marks 0 se 100 ke beech hain ya nahi.
+Agar marks is range se bahar hain, toh error message show hota hai aur `break` marks input loop ko stop karta hai.
+
+Ye validation isliye hai taaki invalid marks student ke record mein add na hon.
+
+16. if len(marks) == 3
+
+`len(marks)` list mein items ki count deta hai.
+Yahan check karte hain ki student ke teeno subject marks successfully enter hue hain ya nahi.
+
+Agar list mein 3 marks hain, tab `add_student()` call hota hai. Isse incomplete record add hone se bachta hai.
+
+17. try-except ValueError
+
+`try` ke andar aisa code hota hai jahan invalid input ki wajah se error aa sakta hai.
+Agar user marks ke liye "abc" jaisa text enter kare, toh `int()` convert nahi kar sakta aur `ValueError` aata hai.
+
+`except ValueError` error ko handle karke simple message show karta hai. Isse program input error par directly crash nahi hota.
+
+18. break
+
+`break` current loop ko completely stop karta hai.
+Is program mein option 4 choose karne par `break` use hota hai, taaki menu loop terminate ho aur program exit kar sake.
+
+19. continue
+
+`continue` current loop iteration ko skip karke next iteration start karta hai.
+Invalid choice ya duplicate roll number ke case mein use hota hai, taaki program baaki code run kiye bina menu par wapas aa jaye.
+
+20. len(students)
+
+`len(students)` dictionary mein total student records ki count return karta hai.
+Display All Students option ke end mein ise use karke total students show karte hain.
+
+21. if __name__ == "__main__"
+
+Is condition se `main()` tab call hota hai jab Python file directly run hoti hai.
+Agar isi file ko kisi doosre Python program mein import kiya jaaye, toh program automatically start nahi hota.
+
+Ye Python mein commonly used pattern hai, jisse program ko direct run aur import dono tarah se use kar sakte hain.

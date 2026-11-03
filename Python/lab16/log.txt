@@ -1,0 +1,60 @@
+1. format_number(n)
+   Is function ka kaam number ko clean format mein dikhana hai.
+   Agar result 5.0 hai, toh ye 5 return karega. Agar 5.25 hai, toh 5.25 hi rahega.
+   Isse output aur calculation history readable banti hai.
+
+2. add(a, b)
+   Do numbers ko add karta hai aur result return karta hai.
+   Isko alag function banaya kyunki addition ka logic reusable rahe aur main program simple ho.
+
+3. subtract(a, b)
+   Pehle number mein se doosra number minus karta hai.
+   Separate function se subtraction ka logic menu/input code se alag rehta hai.
+
+4. multiply(a, b)
+   Do numbers ka product return karta hai.
+   Modular code mein multiplication ko ek jagah define karne se reuse aur testing easy hoti hai.
+
+5. divide(a, b)
+   a ko b se divide karta hai.
+   Division se pehle b == 0 check hota hai. Zero se divide karna invalid hai, isliye function None return karta hai.
+   Menu mein bhi defensive check diya hai taaki user ko clear error message mile aur program crash na ho.
+
+6. modulus(a, b)
+   Division ke baad remainder return karta hai (a % b).
+   Agar b zero ho, toh None return hota hai. Zero modulus se bachne ke liye check zaroori hai.
+
+7. power(base, exp=2)
+   Base ki power calculate karta hai.
+   exp=2 default argument hai: user exponent blank chhode toh number ka square calculate hoga.
+   Example: power(5) -> 25; power(2, 3) -> 8.
+
+8. get_number(prompt)
+   User se input leta hai, usko float mein convert karta hai, aur format_number se integer/float format set karta hai.
+   Isse repeated input conversion code ek hi function mein aa jata hai.
+   Invalid input par ValueError raise hota hai, jise main() ka try/except handle karta hai.
+
+9. show_menu()
+   Menu ko print karta hai.
+   Menu ko separate function banane se har loop mein menu dikhana easy hai aur menu text duplicate nahi hota.
+
+10. main()
+    Program ka main flow manage karta hai: menu, user choice, inputs, function calls, results aur history.
+    Calculation ke actual formulas alag functions mein hain, isliye main() mostly control flow handle karta hai.
+
+11. history = []
+    Ye list current session ki calculations store karti hai.
+    Har successful calculation ke baad ek string, jaise "12 + 8 = 20", list mein append hoti hai.
+    Option 7 se purani calculations chronological order mein dikh sakti hain.
+
+12. while True
+    Menu ko continuously repeat karta hai jab tak user option 8 select na kare.
+    break program ko cleanly exit karta hai, aur continue menu par wapas bhejta hai.
+
+13. try/except ValueError
+    Agar user number ki jagah text ya invalid value enter kare, toh program crash nahi hota.
+    Error message show hota hai aur loop dobara menu/input par aata hai.
+
+14. if __name__ == "__main__"
+    Is check se main() tabhi run hota hai jab file directly execute ho.
+    Agar file ko kisi doosre Python program mein import kiya jaaye, toh calculator automatically start nahi hota.

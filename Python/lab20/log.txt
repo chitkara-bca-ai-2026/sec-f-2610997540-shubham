@@ -1,0 +1,174 @@
+Is program mein office ke daily activities ko ek text file mein store karte hain.
+User nayi entry add kar sakta hai aur pehle se saved entries ko display kar sakta hai.
+Is lab ka main concept file append mode hai, jisme purana data delete kiye bina naya data add hota hai.
+
+1. append_entry(filename, entry)
+
+Is function ka kaam daily log file mein ek nayi entry add karna hai.
+`filename` file ka naam hai, jaise "daily_log.txt".
+`entry` user ka likha hua log message hai.
+
+`open(filename, "a", encoding="utf-8")` file ko append mode mein open karta hai.
+Append mode (`"a"`) file ke end mein naya data add karta hai. Purani entries delete ya overwrite nahi hoti.
+Agar file pehle se nahi hai, toh append mode nayi file create kar sakta hai.
+
+`file.write(entry + "\n")` entry ko file mein likhta hai.
+`"\n"` new line add karta hai, taaki har entry alag line mein save ho.
+
+Function ke baad success message print hota hai.
+Is function ko alag banaya kyunki file mein entry add karne ka kaam reusable aur main program se separate rahe.
+
+2. display_log(filename)
+
+Is function ka kaam file mein saved saari entries read karke screen par display karna hai.
+`open(filename, "r", encoding="utf-8")` file ko read mode mein open karta hai.
+`file.readlines()` file ki har line ko list ke ek item ke form mein read karta hai.
+
+`enumerate(entries, start=1)` har entry ke saath numbering deta hai.
+`number:02` number ko 2 digits mein show karta hai, jaise 01, 02, 03.
+`entry.strip()` line ke extra newline aur whitespace ko remove karta hai, taaki output neat dikhe.
+
+`len(entries)` total entries ki count return karta hai.
+Is function ko separate banaya kyunki complete log display karne ka code ek hi jagah rahe.
+
+3. show_menu()
+
+Is function ka kaam menu ke 3 options print karna hai:
+1. Add Log Entry
+2. Display Complete Log
+3. Exit
+
+Menu ko separate function banaya kyunki while loop mein har operation ke baad menu dobara show hota hai.
+Isse print statements baar-baar likhne nahi padte aur code organized rehta hai.
+
+4. main()
+
+`main()` program ka main flow control karta hai.
+Ye file ka naam set karta hai, sample entries initialize karta hai, menu show karta hai aur user ki choice ke according function call karta hai.
+
+Entry add karne ka actual kaam `append_entry()` karta hai aur log display karne ka kaam `display_log()` karta hai.
+Isliye `main()` mostly user input aur program flow manage karta hai.
+
+5. filename = "daily_log.txt"
+
+Ye variable log file ka naam store karta hai.
+Filename ko variable mein rakhne se har jagah file ka naam baar-baar likhne ki zaroorat nahi hoti.
+Agar file ka naam change karna ho, toh ek jagah update kar sakte hain.
+
+6. os.path.exists(filename)
+
+`os.path.exists()` check karta hai ki file already present hai ya nahi.
+Ye `True` ya `False` return karta hai.
+
+Lab mein sample office entries pehle se available honi chahiye.
+Isliye agar daily_log.txt nahi milti, tab program write mode mein file create karke sample entries add karta hai.
+
+Agar file pehle se exist karti hai, toh sample data dobara nahi likha jaata.
+Ye condition existing content ko preserve karne ke liye important hai.
+
+7. import os
+
+`os` Python ka built-in module hai jo operating system se related operations ke liye use hota hai.
+Is program mein `os.path.exists()` use karne ke liye `os` import kiya gaya hai.
+
+8. open(filename, "a")
+
+`open()` file ko access karne ke liye use hota hai.
+`"a"` append mode hai.
+
+Append mode mein:
+- Naya data file ke end mein add hota hai.
+- Purana content safe rehta hai.
+- File nahi hai toh create ho sakti hai.
+
+Is lab ka main requirement append mode use karna hai, isliye nayi log entry save karte waqt `"a"` use hota hai.
+
+9. open(filename, "r")
+
+`"r"` read mode hai.
+Is mode mein file ka content read karte hain, usmein naya data write nahi karte.
+
+Display Complete Log option mein read mode use hota hai taaki user saari saved entries dekh sake.
+
+10. with open(...)
+
+`with open(...)` context manager hai.
+Iska use file ko safely open aur close karne ke liye hota hai.
+
+Jab `with` block complete hota hai, Python file ko automatically close kar deta hai.
+Agar block ke andar error aa jaaye, tab bhi file close karne ka process manage hota hai.
+
+Isliye `with open()` manually `file.close()` likhne se convenient aur safer hai.
+
+11. file.write(entry + "\n")
+
+`write()` file ke andar text likhta hai.
+`entry` user ka message hai aur `"\n"` next line par jaane ke liye newline character hai.
+
+Newline na ho toh multiple entries ek hi line par jud sakti hain.
+Isliye har entry ke end mein newline add kiya gaya hai.
+
+12. file.readlines()
+
+`readlines()` file ki saari lines ko list mein read karta hai.
+Har line list ka ek item ban jaati hai.
+
+Is list par loop chala kar entries ko numbering ke saath display kar sakte hain.
+`len(entries)` se total records bhi count ho jaate hain.
+
+13. enumerate(entries, start=1)
+
+`enumerate()` loop ke saath item ka index/number bhi deta hai.
+`start=1` numbering ko 1 se start karta hai, 0 se nahi.
+
+Yahan isliye use kiya hai taaki log entries [01], [02], [03] ke format mein display hon.
+
+14. entry.strip()
+
+`strip()` string ke start aur end se extra whitespace remove karta hai.
+File se read ki hui line ke end mein newline character hota hai.
+`strip()` use karne se print output mein extra blank lines nahi aati.
+
+15. while True
+
+`while True` menu ko continuously run karta hai.
+Ek log entry add ya display karne ke baad user dobara menu par aa sakta hai.
+
+Exit option par `break` loop ko stop karta hai.
+Isse program ek hi run mein multiple log operations allow karta hai.
+
+16. if, elif, else
+
+Ye conditions user ki choice ke according operation select karti hain.
+
+- `if choice == "1"` nayi log entry add karta hai.
+- `elif choice == "2"` complete log display karta hai.
+- `elif choice == "3"` program exit karta hai.
+- `else` invalid choice par error message show karta hai.
+
+Conditions isliye use hoti hain taaki user ke selected option ke according correct code run ho.
+
+17. input(...).strip()
+
+`input()` user se menu choice ya log message leta hai.
+`.strip()` input ke start aur end ke extra spaces remove karta hai.
+
+Log entry par `strip()` lagane se blank ya sirf spaces wali entry ko check karna easy hota hai.
+
+18. if entry
+
+`if entry:` check karta hai ki user ne kuch text enter kiya hai ya nahi.
+Empty string Python mein false hoti hai.
+
+Agar user blank entry deta hai, toh file mein empty line add nahi hoti aur error message show hota hai.
+Isse log file clean rehti hai.
+
+19. break
+
+`break` current loop ko stop karta hai.
+Choice 3 par goodbye message print hota hai aur `break` menu loop se bahar nikalta hai.
+
+20. if __name__ == "__main__"
+
+Is condition se `main()` tabhi run hota hai jab file directly execute hoti hai.
+Agar file kisi doosre Python program mein import ho, toh Daily Log Book automatically start nahi hoti.
