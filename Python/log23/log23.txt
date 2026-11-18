@@ -1,0 +1,39 @@
+1. Initial Data Setup
+
+Program start hote hi check karta hai ki `student_marks.txt` file bani hui hai ya nahi. Agar nahi bani hoti, toh yeh khud hi file bana kar usme 3 students ka data (`Anas,85`, `Riya,92`, `Karan,40`) comma-separated format mein daal deta hai.
+
+
+
+2. Main Menu Loop
+
+Ek `while True` loop aapko baar-baar 3 options deta hai: Records aur Average dekhna, Naye student ke marks add karna, ya Exit karna.
+
+
+
+3. Records Dekhna Aur Average Nikalna (Option 1)
+
+Jab aap Option 1 chunte ho, toh `display_and_calculate_average()` function file ko read karta hai:
+
+- File ki har line ko `.strip()` se clean karke `.split(',')` se do hisson mein toda jaata hai—ek taraf student ka naam, aur doosri taraf uske marks.
+
+- Marks ko text se number mein badalne ke liye `int()` lagaya jaata hai, taaki unka total kiya ja sake.
+
+- Loop chalta rehta hai, har student ka naam aur marks ek neat table mein print hota rehta hai, aur saath hi `total_students` aur `total_marks` judte rehte hain.
+
+- Aakhir mein `total_marks / total_students` karke class average nikala jaata hai aur `:.2f` ki madad se decimal ke baad sirf 2 digits tak dikhaya jaata hai.
+
+
+
+4. Naye Student Ke Marks Save Karna (Option 2)
+
+Option 2 mein program aapse student ka naam aur marks maangta hai:
+
+- Yahan `try...except` aur `0 <= marks <= 100` ka check lagaya gaya hai taaki koi galti se text ya 100 se zyada marks na daal de.
+
+- Data sahi hone par `store_student()` function file ko append mode (`'a'`) mein kholta hai. Append mode ka fayda yeh hai ki purana data delete nahi hota, balki naya record file ke aakhir mein jud jaata hai.
+
+
+
+5. Program Band Karna (Option 3)
+
+`3` dabane par program goodbye bolta hai aur `break` se loop khatam karke band ho jaata hai.

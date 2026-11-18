@@ -1,0 +1,33 @@
+1. Sample Report File Banana (Setup)
+
+Sabse pehle program check karta hai ki folder mein `report.txt` maujood hai ya nahi. Agar nahi hai, toh yeh khud hi ek file create karke usme corporate report ki 5 lines save kar deta hai (jisme AI aur data pipelines ka zikr hai), taaki aap seedha search test kar sako.
+
+
+
+2. Continuous Menu Loop
+
+Program ek `while True` loop mein rehta hai aur aapse poochta hai ki aap kya karna chahte ho—Keyword search karna hai, poora document dekhna hai, ya bahar nikalna hai.
+
+
+
+3. Keyword Search Karna (Option 1)
+
+Option 1 choose karne par program aapse woh word poochta hai jo aapko dhoondhna hai. Phir `search_keyword()` function kaam shuru karta hai:
+
+- Yeh `enumerate(f, start=1)` lagakar file ki ek-ek line ko uske line number ke saath check karta hai.
+
+- Case-Insensitive Search: Chahe aap `'ai'` likho ya `'AI'`, dono match honge kyunki code search karte waqt keyword aur file ki line dono ko `.lower()` se chhote aksharon (lowercase) mein badal deta hai.
+
+- Count Aur Print: Jis line mein word milta hai, wahan `.count()` se gina jaata hai ki us line mein woh word kitni baar aaya hai. Phir line number, match count, aur poori line screen par print ho jaati hai. Saari lines check hone ke baad total matches ka summary dikhaya jaata hai.
+
+
+
+4. Poora Document Padhna (Option 2)
+
+Option 2 select karne par `display_document()` function file ko kholta hai aur saari lines ko unke line numbers ke saath screen par dikha deta hai.
+
+
+
+5. Exit Karna (Option 3)
+
+`3` press karte hi goodbye message aata hai aur `break` ki madad se program cleanly band ho jaata hai.

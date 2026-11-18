@@ -1,0 +1,35 @@
+1. Sample File Ready Karna (Setup)
+
+Program start hote hi sabse pehle `os` module ki madad se check karta hai ki aapke folder mein `document.txt` naam ki file pehle se hai ya nahi. Agar file nahi milti, toh program khud hi ek nayi file bana deta hai aur usme AI aur Python ke baare mein 4 sample sentences likh deta hai, taaki aap bina kisi jhanjhat ke turant program ko test kar sako.
+
+
+
+2. Main Menu Chalana
+
+File set hone ke baad program ek `while True` loop start karta hai. Iska fayda yeh hai ki jab tak aap exit nahi karte, program chalta rahega aur aapko 3 options dikhata rahega: Statistics calculate karna, Document padhna, ya Exit karna. Input lete waqt `.strip()` use kiya gaya hai taaki galti se space dabne par bhi input sahi se read ho.
+
+
+
+3. Document Ki Statistics Nikalna (Option 1)
+
+Jab aap Option 1 select karte ho, toh `get_document_statistics()` function call hota hai. Yeh file ko read mode (`'r'`) mein khol kar poora text ek hi baar mein `content` variable mein padh leta hai:
+
+- Lines ginne ke liye: `content.splitlines()` use hota hai jo text ko har new line par tod deta hai, aur `len()` se total lines mil jaati hain.
+
+- Words ginne ke liye: `content.split()` text ko har space ya enter par tod kar words ki list banata hai, aur `len()` se total words count ho jaate hain.
+
+- Characters ginne ke liye: Seedha `len(content)` chalaya jaata hai jo spaces aur punctuation mila kar har ek character ko count kar leta hai.
+
+End mein yeh teeno numbers ek saaf-suthre report card ki tarah screen par print ho jaate hain.
+
+
+
+4. Poora Document Line Numbers Ke Saath Dekhna (Option 2)
+
+Agar aap Option 2 dabate ho, toh `display_document()` function file ko line-by-line padhta hai. Yahan `enumerate(f, start=1)` ka use kiya gaya hai taaki har line ke aage uska line number (`1 | ...`, `2 | ...`) print ho sake. `.rstrip()` isliye lagaya hai taaki har line ke beech mein faltu khaali line na aaye.
+
+
+
+5. Program Band Karna (Option 3)
+
+Jaise hi aap `3` enter karte ho, program ek goodbye message dikhata hai aur `break` lagakar loop se bahar aa jaata hai

@@ -1,0 +1,27 @@
+1. Data File Set Karna (Setup)
+
+Program start hote hi menu dikhane se pehle check karta hai ki kya aapke folder mein `students_data.csv` file pehle se maujood hai ya nahi. Iske liye Python ka `os` module use hota hai. Agar file nahi milti, toh program khud hi ek nayi CSV file bana deta hai aur usme 6 sample students ka data (jisme kuch ke marks 50 se upar hain aur kuch ke neeche) daal deta hai, taaki aapko manually file banani na pade aur aap turant test kar sako.
+
+
+
+2. Main Menu Chalana
+
+File ready hone ke baad, program ek `while True` loop mein chala jaata hai. Iska matlab hai ki jab tak aap khud exit nahi karte, yeh aapko baar-baar menu dikhata rahega—Display All Students, Filter Students, ya Exit. Jab aap apni choice type karte ho, toh `.strip()` laga hota hai taaki agar galti se aage-peeche space dab jaaye toh program crash na ho.
+
+
+
+3. Saare Students Ka Data Dekhna (Option 1)
+
+Agar aap Option 1 choose karte ho, toh program `students_data.csv` ko read mode mein kholta hai aur `csv.DictReader` ka use karta hai. Yeh bahut kaam ki cheez hai kyunki yeh file ki pehli line (`Roll No, Name, Subject, Marks`) ko header maan leta hai aur neeche ki har row ko ek dictionary mein badal deta hai. Phir loop ek-ek student ka data clean columns mein screen par print karta hai aur end mein total students ki ginti bata deta hai.
+
+
+
+4. 50 Se Zyada Marks Wale Students Filter Karna (Option 2)
+
+Option 2 bhi lagbhag same tareeke se kaam karta hai, bas isme ek chhoti si condition lag jaati hai. Kyunki CSV file se jo bhi data read hota hai woh text (string) format mein hota hai, isliye code pehle `int()` lagakar marks ko number mein convert karta hai. Phir check karta hai ki kya marks 50 se zyada hain (`marks > 50`). Jis student ke marks 50 se upar hote hain, sirf usi ka record screen par print hota hai aur end mein qualified students ka total count dikh jaata hai.
+
+
+
+5. Program Band Karna (Option 3)
+
+Jab aapka kaam ho jaaye aur aap `3` press karo, toh program ek goodbye message print karta hai aur `break` statement chalakar loop ko rok deta hai, jisse program cleanly band ho jaata hai.
